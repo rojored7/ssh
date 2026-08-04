@@ -1,3 +1,1 @@
-takeown /F 'C:\ProgramData\ssh\administrators_authorized_keys' /A
-icacls 'C:\ProgramData\ssh\administrators_authorized_keys' /setowner '*S-1-5-32-544'
-Restart-Service sshd
+Get-WinEvent -LogName "OpenSSH/Operational" -MaxEvents 10 | Format-List TimeCreated,Message
