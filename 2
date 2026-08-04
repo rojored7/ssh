@@ -1,3 +1,1 @@
-(Get-Content 'C:\ProgramData\ssh\sshd_config') -replace '^#?LogLevel.*', 'LogLevel DEBUG3' | Set-Content 'C:\ProgramData\ssh\sshd_config'
-Select-String -Path 'C:\ProgramData\ssh\sshd_config' -Pattern 'LogLevel'
-Restart-Service sshd
+Get-WinEvent -LogName "OpenSSH/Operational" -MaxEvents 15 | Format-List TimeCreated,Message
