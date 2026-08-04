@@ -1,1 +1,5 @@
-Get-Content C:\ProgramData\ssh\debug.log
+(Get-Content 'C:\ProgramData\ssh\sshd_config') -replace 'Match Group administrators', 'Match Group Administradores' | Set-Content 'C:\ProgramData\ssh\sshd_config'
+Select-String -Path 'C:\ProgramData\ssh\sshd_config' -Pattern 'Match Group'
+Unregister-ScheduledTask -TaskName 'SshdDebugTemp' -Confirm:$false
+Start-Service sshd
+Get-Service sshd
