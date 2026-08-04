@@ -1,2 +1,3 @@
-Get-Content 'C:\ProgramData\ssh\administrators_authorized_keys'
-Select-String -Path 'C:\ProgramData\ssh\sshd_config' -Pattern 'Match|AuthorizedKeysFile|PubkeyAuthentication'
+(Get-Content 'C:\ProgramData\ssh\sshd_config') -replace '^#?LogLevel.*', 'LogLevel DEBUG3' | Set-Content 'C:\ProgramData\ssh\sshd_config'
+Select-String -Path 'C:\ProgramData\ssh\sshd_config' -Pattern 'LogLevel'
+Restart-Service sshd
