@@ -1,2 +1,5 @@
-Stop-Service sshd
-& 'C:\Program Files\OpenSSH\sshd.exe' -d -p 22
+$action = New-ScheduledTaskAction -Execute 'cmd.exe' -Argument '/c "C:\Windows\System32\OpenSSH\sshd.exe" -d -p 22 > C:\ProgramData\ssh\debug.log 2>&1'
+Register-ScheduledTask -TaskName 'SshdDebugTemp' -Action $action -User 'SYSTEM' -RunLevel Highest -Force | Out-Null
+Start-ScheduledTask -TaskName 'SshdDebugTemp'
+Start-Sleep -Seconds 2
+Get-ScheduledTask -TaskName 'SshdDebugTemp' | Get-ScheduledTaskInfo
