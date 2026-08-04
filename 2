@@ -1,1 +1,1 @@
-$action = New-ScheduledTaskAction -Execute "cmd.exe" -Argument "/c \"C:\Windows\System32\OpenSSH\sshd.exe\" -d -p 22 > C:\ProgramData\ssh\debug2.log 2>&1"; Register-ScheduledTask -TaskName "SshdDebugTemp2" -Action $action -User "SYSTEM" -RunLevel Highest -Force | Out-Null
+art-ScheduledTask -TaskName "SshdDebugTemp2"
