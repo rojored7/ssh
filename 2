@@ -1,1 +1,2 @@
-Get-WinEvent -LogName "OpenSSH/Operational" -MaxEvents 15 | Format-List TimeCreated,Message
+Stop-Service sshd
+& 'C:\Program Files\OpenSSH\sshd.exe' -d -p 22
