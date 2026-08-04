@@ -1,1 +1,2 @@
-Get-WinEvent -LogName "OpenSSH/Operational" -MaxEvents 10 | Format-List TimeCreated,Message
+Get-Content 'C:\ProgramData\ssh\administrators_authorized_keys'
+Select-String -Path 'C:\ProgramData\ssh\sshd_config' -Pattern 'Match|AuthorizedKeysFile|PubkeyAuthentication'
